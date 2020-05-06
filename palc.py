@@ -2,18 +2,10 @@
 #THANKS TO https://simpleit.rocks/python/how-to-translate-a-python-project-with-gettext-the-easy-way/ and https://inventwithpython.com/blog/2014/12/20/translate-your-python-3-program-with-the-gettext-module/ for their GETTEXT guides! :)
 # THANKS TO @ErdoganOnal for their comment on this SO question: https://stackoverflow.com/questions/61621821/any-secure-alternatives-for-this?noredirect=1#comment109002742_61621821
 # THANKS TO https://stackoverflow.com/questions/33594958/is-it-possible-to-align-a-print-statement-to-the-center-in-python
-# 
-import sys, os, logging #sys so I can exit, os so I can do I can't remember, logging so I can log.
-logging.basicConfig(filename="palc.log", level=logging.DEBUG) #set up logging
-try: 
-    import msvcrt 
-    _IS_WINDOWS = True 
-    logger.info("Imported msvcrt")
-except ImportError: 
-    import tty 
-    import termios 
-    _IS_WINDOWS = False 
-    logging.info("Imported tty, termios")
+from tkinter import *
+from tkinter import messagebox
+import logging #logging so I can log.
+logging.basicConfig(filename="GUIpalc.log", level=logging.DEBUG) #set up logging
 import gettext #to translate Palc
 language = input("English or Francais? (do not add accents to letters/ne pas ajouter les accents aux lettres): ")
 language = language.lower()
@@ -33,39 +25,27 @@ try:
 except:
     l_translations.install()
     _ = l_translations.gettext
+errTitle = (_("ERROR!"))
+funcError = (_("I can't find file root.py, and therefore you cannot calculate roots."))
 couldNotFindRoot = False #so that I can prevent errors
 from sys import exit as e #so that we can exit later on
 import time
 try:
     from root import *
-except:
+except ImportError:
     couldNotFindRoot = True
     logging.error("Could not access file root.py")
-    print(_("I can't find file root.py, and therefore you cannot calculate roots."))
+    messagebox.showerror(errTitle, funcError)
 try:
     from func import *
-except EOFError:
+except ImportError:
     logging.critical("Could not access file func.py")
-    e(_("I can't access the file func.py. This file is necessary for proper function of the Software."))
+    messagebox.showerror("ERROR!", "I can't access the file func.py. This file is necessary for proper function of the Software.")
+    exit()
 print(_("Loading...............\n"))
 time.sleep(2)
 def palc():
     while True:
-       print(_("Press any key to continue..."), end='', flush=True) 
-       if _IS_WINDOWS: 
-           msvcrt.getch() 
-       else: 
-           fd = sys.stdin.fileno() 
-           settings = termios.tcgetattr(fd) 
-           try: 
-               tty.setraw(sys.stdin.fileno()) 
-               sys.stdin.read(1) 
-           finally: 
-               termios.tcsetattr(fd, termios.TCSADRAIN, settings)
-       print(chr(27)+'[2j') #First attempt at clearing the screen with ANSI escape codes.
-       print('\033c') #Second attempt at clearing the screen with ANSI escape codes.
-       print('\x1bc') #Third attempt at clearing the screen with ANSI escape codes.
-#CALCULATION CHOICE
        calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
        calc = calc.lower() #make variable "calc" lowercase
 #HELP
@@ -197,12 +177,6 @@ def palc():
             I don't understand your request. Here are the currently supported calculations:
             * or x; / or div; -, min, or sub; + or add; % or mod (modulo); sq or [] (square); ar or # (area); vol (volume); {} (cube); ex (exponents); root (roots); = (equals); log (logarithm); mem (memory); and base (convert number system). Sorry for the inconvenience
             '''))
-width = os.get_terminal_size().columns
-for i in range(0, width):
-    print("-", sep="", end="")
-print(_("Welcome to Palc!".center(width)))
-for i in range(0, width):
-    print("-", sep="", end="")
 try:
     palc() #run all that code
 except KeyboardInterrupt: #if ^C
