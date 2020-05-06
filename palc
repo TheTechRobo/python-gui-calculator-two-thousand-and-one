@@ -1,0 +1,4 @@
+#!/bin/bash
+python3 palc.py
+
+#By now I am just wasting space to get to 28bytes
