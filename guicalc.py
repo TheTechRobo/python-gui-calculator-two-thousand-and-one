@@ -11,42 +11,30 @@ def number(num):
     numbers = numbers + num
 
 def op(calc):
-    #TAX
-    elif calc == "tax":
+#TAX
+   if calc == "tax":
         taxCalc()
-    #MULTIPLICATION
-    elif calc == "x":
+#MULTIPLICATION
+   elif calc == "x":
         multi()
-    #SQUARE
-    elif "sq" == calc:
+#SQUARE
+   elif "sq" == calc:
         n = int(input(_("Number? ")))
         cprint.info(n * n)
         logging.info(("User squared number ", n, " got result ", (n * n)))
-    #DIVISION
-    elif "/" == calc:
+#DIVISION
+   elif "/" == calc:
         div()
-    #SUBTRACTION
-    elif "-" == calc:
+#SUBTRACTION
+   elif "-" == calc:
         sub()
-   elif "sub" == calc:
-        sub()
-   elif "min" == calc:
-        sub()
-    #ADDITION
+#ADDITION
    elif "+" == calc:
         add()
-   elif "add" == calc:
-        add()
-    #MODULO
+#MODULO
    elif "%" == calc:
         mod()
-   elif "mod" == calc:
-        mod()
 #AREA
-   elif "ar" == calc:
-        area()
-   elif "#" == calc:
-        area()
    elif "area" == calc:
         area()
 #VOLUME
