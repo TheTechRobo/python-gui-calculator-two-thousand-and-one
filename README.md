@@ -1,8 +1,9 @@
-# python-text-calculator
+# NOTE: This project is currently NOT SUPPORTED as it is not turning out how I want it to.
+# python-gui-calculator
 
 **Please, if you make a pull request add your username to CONTRIBUTORS.md**
 
-[![CodeFactor](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/thetechrobo/python-gui-calculator-two-thouand-and-one/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-gui-calculator-two-thousand-and-one/overview/master)
 
 This is a Python script I forked when I wanted to learn math in Python.
 
