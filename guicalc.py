@@ -125,3 +125,6 @@ Button(main, text=1, command=number(1)).pack()
 Button(main, text=2, command=number(2)).pack()
 Button(main, text=3, command=number(3)).pack()
 Button(main, text=4, command=number(4)).pack()
+
+
+main.mainloop()
