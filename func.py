@@ -1,10 +1,5 @@
 import logging
 from cprint import *
-def getNum(): #ask for two numbers and then return to function
-    n1 = int(input(_("Please enter the first number: ")))
-    n2 = int(input(_("Please enter the second number: ")))
-    logging.info(("Palc got two numbers: ", n1, " and ", n2))
-    return n1, n2
 def h():
     print(_('''
      Current list of commands: multiplication (*), division (/), addition (+), square (sq), subtraction (-), modulo (%), area (#), volume (vol), cube ({}), cube twice ({2}), exponents (power), root (root), equals (=), logarithm (log), memory (mem), interest calculator (interest), fibonacci sequence (fib), percentage (percent), and convert number systems (base). Type e to e.
@@ -15,13 +10,16 @@ def multi(): #multiplication
     n1, n2 = getNum()
     cprint.info(_("\nThat equals...\n%s" % (n1 * n2)))
     logging.info(("User multiplied ", n1, " by ", n2, " and got result ", (n1 * n2)))
+    return (n1 * n2)
 def div(): #division
     n1, n2 = getNum()
     try:
         cprint.info(_("\nThat equals...\n%s" % (n1 / n2)))
+        return (n1 / n2)
     except ZeroDivisionError:
         cprint.err(_("Do not divide by zero!"))
         logging.error("User attempted to divide by zero.")
+        raise ValueError
     except:
         cprint.err(_("There was an unknown issue dividing your Numbers..."))
     logging.info(("User divvied ", n1, " by ", n2, ", getting a result of ", (n1 / n2)))
@@ -204,6 +202,7 @@ Choose one: """)))
         newPrice = theSalesTax + originPrice
         logging.info(("User used Ontarian Sales Tax 13 PerCent  with originPrice %s sales tax %s, with price %s" % (originPrice, theSalesTax, newPrice)))
         print(_("After tax, the price is: \n%s" % newPrice))
+        return newPrice
     elif whatPlace == 2:
         originPrice = int(input(_("What is the original price (before tax)? ")))
         percent = 14.975
@@ -211,6 +210,7 @@ Choose one: """)))
         newPrice = theSalesTax + originPrice
         logging.info(("User used Quebec Sales Tax 14.975 PerCent  with originPrice %s sales tax %s, with price %s" % (originPrice, theSalesTax, newPrice)))
         print(_("After tax, the price is: \n%s" % newPrice))
+        return newPrice
     elif whatPlace == 3:
         originPrice = int(input(_("What is the original price (before tax)? ")))
         percent = 5.0
@@ -218,6 +218,7 @@ Choose one: """)))
         newPrice = theSalesTax + originPrice
         logging.info(("User used Alberta Sales Tax 5 PerCent  with originPrice %s sales tax %s, with price %s" % (originPrice, theSalesTax, newPrice)))
         print(_("After tax, the price is: \n%s" % newPrice))
+        return newPrice
     elif whatPlace == 4:
         originPrice = int(input(_("What is the original price (before tax)? ")))
         percent = 12.0
@@ -225,24 +226,13 @@ Choose one: """)))
         newPrice = theSalesTax + originPrice
         logging.info(("User used Manitoba Sales Tax 12 PerCent  with originPrice %s sales tax %s, with price %s" % (originPrice, theSalesTax, newPrice)))
         print(_("After tax, the price is: \n%s" % newPrice))
+        return newPrice
     elif whatPlace == 5:
         originPrice = float(input(_("OK, enter the original price: ")))
         percent = float(input(_("Now enter the tax percentage without the percent sign: ")))
         theSalesTax = percentage(percent, originPrice)
         newPrice = theSalesTax + originPrice
         print(_("After tax, the price is: \n%s" % newPrice))
+        return newPrice
     else:
         print(_("You did not type answer. Abort."))
-def sin():
-    which = input(_("Would you like sine or inverse sine? (sin / inverse)\nType: "))
-    which = which.lower()
-    if which == "sin":
-        print(_("Sine it is!"))
-        number = float(input(_("Enter the number: ")))
-        import math
-        res = math.degrees(math.sin(number))
-        print(res)
-        logging.info(("User cos'ed number ", number, " getting result of ", res))
-    elif which == "inverse":
-        print(_("Inverse it is!"))
-        number = float(input(_("Enter the number: ")))
