@@ -1,33 +1,18 @@
 import logging
 num = ""
 numm = ""
+def number(num):
+    num = str(num)
+    global numbers
+    numbers = numbers + num
 def getNum():
     num1 = numbers
     new = Toplevel()
-    new.title("Press the second number: ")
-    def n(num):
-        global numm
-        num = str(num)
-        numm = numm + num
-    w = Button(main, text=1, command=n(1))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=2, command=n(2))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=3, command=n(3))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=4, command=n(4)).pack()
-    w = Button(main, text=5, command=n(5))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=6, command=n(6))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=7, command=n(7)).pack()
-    w = Button(main, text=8, command=n(8))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=9, command=n(9))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text=0, command=n(0))
-    w.pack(padx=5, pady=10, side=LEFT)
-    w = Button(main, text="=", command=(return numm)).pack()
+    new.title("Enter the second number: ")
+    e = Entry(main)
+    e.pack()
+    num2 = e.get()
+    return num1, num2
 def h():
     print(_('''
      Current list of commands: multiplication (*), division (/), addition (+), square (sq), subtraction (-), modulo (%), area (#), volume (vol), cube ({}), cube twice ({2}), exponents (power), root (root), equals (=), logarithm (log), memory (mem), interest calculator (interest), fibonacci sequence (fib), percentage (percent), and convert number systems (base). Type e to e.
