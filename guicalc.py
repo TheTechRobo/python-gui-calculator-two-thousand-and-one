@@ -82,7 +82,7 @@ def op(calc):
         else:
             print(_("Currently I don't support the root you chose. Hopefully this will change :)"))
 #EASTER EGG!
-   elif "=" in calc:
+   elif calc == "=":
         print()
         number = int(input("Type in a number: "))
         if number == 42:
@@ -103,7 +103,7 @@ def op(calc):
    elif calc == "log":
        log()
 #MEMORY
-   elif "mem" in calc:
+   elif calc == "mem":
         memOrRecall = input("Would you like to set the memory or recall? (set / recall)\nType: ")
         if memOrRecall.lower() in "set":
             remember()
@@ -113,11 +113,11 @@ def op(calc):
             cprint.err(_("You did not type an answer.\nAbort."))
             logging.error("User didn't type an answer in MEM function")
 #FIBONACCI
-   elif "fib" in calc:
+   elif calc == "fib":
         cprint.ok(_("Starting fibonacci sequence. Please wait."))
         fib()
 #PERCENTAGE
-   elif "percent" in calc: #SOURCE: https://stackoverflow.com/a/5998010/9654083
+   elif calc == "percent": #SOURCE: https://stackoverflow.com/a/5998010/9654083
         whichOne = int(input(_('''1 - Calculate "What is x% of y?"
 2 - Convert a number to percentage.
 Type: ''')))
@@ -128,5 +128,5 @@ Type: ''')))
         else:
             cprint.err(_("You didn't type a valid answer. Abort."))
 #INTEREST
-   elif "interest" in calc:
+   elif calc == "interest":
         calculateInterest()
