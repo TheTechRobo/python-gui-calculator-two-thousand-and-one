@@ -18,66 +18,66 @@ def op(calc):
     elif calc == "x":
         multi()
     #SQUARE
-    elif "sq" in calc:
+    elif "sq" == calc:
         n = int(input(_("Number? ")))
         cprint.info(n * n)
         logging.info(("User squared number ", n, " got result ", (n * n)))
     #DIVISION
-    elif "/" in calc:
+    elif "/" == calc:
         div()
     #SUBTRACTION
-    elif "-" in calc:
+    elif "-" == calc:
         sub()
-   elif "sub" in calc:
+   elif "sub" == calc:
         sub()
-   elif "min" in calc:
+   elif "min" == calc:
         sub()
     #ADDITION
-   elif "+" in calc:
+   elif "+" == calc:
         add()
-   elif "add" in calc:
+   elif "add" == calc:
         add()
     #MODULO
-   elif "%" in calc:
+   elif "%" == calc:
         mod()
-   elif "mod" in calc:
+   elif "mod" == calc:
         mod()
 #AREA
-   elif "ar" in calc:
+   elif "ar" == calc:
         area()
-   elif "#" in calc:
+   elif "#" == calc:
         area()
-   elif "area" in calc:
+   elif "area" == calc:
         area()
 #VOLUME
-   elif "vol" in calc:
+   elif "vol" == calc:
         uc()
 #CUBE
-   elif "{}" in calc:
+   elif "{}" == calc:
         cubedNumber = int(input("\nType the number to be cubed: "))
         print()
         cprint.info(cubedNumber ** 3) #Manually cube number
         logging.info(("User cubed number ", cubedNumber, " got result ", (cubedNumber ** 3)))
         print()
 #EXIT
-   elif "quit" in calc:
+   elif "quit" == calc:
         logging.info("User exited using `quit' command")
         e()
 #EXPONENTS
-   elif "power" in calc:
+   elif "power" == calc:
         origin = int(input("Original number?"))
         ex = int(input("Exponent? "))
         cprint.info(origin ** ex)
         logging.info(("User exponented number ", origin, " with ", ex, "getting ", (origin ** ex)))
     #ROOTS
-   elif "root" in calc:
+   elif "root" == calc:
         root = input("Square root or cube root?(square/cube)")
         root = root.lower()
-        if "square" in root:
+        if "square" == root:
             num = input("Number to be rooted?")
             cprint.info(_("That equals.....\n", num ** 0.5))
             logging.info(("user sqrooted number ", (num**0.5)))
-        elif "cube" in root:
+        elif "cube" == root:
             cu()
         else:
             print(_("Currently I don't support the root you chose. Hopefully this will change :)"))
