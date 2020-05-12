@@ -13,6 +13,11 @@ def number(num):
     numbers = numbers + num
 
 def op(calc):
+   Label(main, text="Please Enter The Second Number: ")
+   w = Entry(main)
+   w.pack()
+   num1 = numbers
+   num2 = w.get()
 #TAX
    if calc == "tax":
         taxCalc()
@@ -121,10 +126,29 @@ Type: ''')))
    elif calc == "interest":
         calculateInterest()
 
-Button(main, text=1, command=number(1)).pack()
-Button(main, text=2, command=number(2)).pack()
-Button(main, text=3, command=number(3)).pack()
-Button(main, text=4, command=number(4)).pack()
+
+#SOURCE: https://www.python-course.eu/tkinter_layout_management.php
+w = Button(main, text=1, command=number(1))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=2, command=number(2))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=3, command=number(3))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=4, command=number(4)).pack()
+w = Button(main, text=5, command=number(5))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=6, command=number(6))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=7, command=number(7)).pack()
+w = Button(main, text=8, command=number(8))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=9, command=number(9))
+w.pack(padx=5, pady=10, side=LEFT)
+w = Button(main, text=0, command=number(0))
+w.pack(padx=5, pady=10, side=LEFT)
+
+Label(main, text="OPERATORS").pack()
+w = Button(main, text="+", command=op("+"))
 
 
 main.mainloop()
